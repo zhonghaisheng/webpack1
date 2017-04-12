@@ -38,7 +38,7 @@ module.exports = app.listen(webpackConfig.devServer.port, function (err) {
 
 // 本地json-server服务器搭建代码（前端开发环境用，实际部署到服务器下面则直接请求后台数据接口，此处可删）
 // 引入数据库文件
-var appData = require('../test/static/test.json')
+var appData = require('../project/static/test.json')
 // 引入数据库
 var apiRoutes = express.Router()
 // 使用api的方法来创建连接时候的请求
