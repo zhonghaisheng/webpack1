@@ -40,17 +40,18 @@ module.exports = {
             //webpack 处理html中img的src引入的图片
             template: 'html-withimg-loader!' + path.resolve(__dirname, './index.html'),
             filename: 'index.html',
-            chunks:['index','common'],   // 这个模板对应上面那个节点（如果用了CommonsChunkPlugin，记得将公用js引进来）
+            chunks: ['index', 'common'], // 这个模板对应上面那个节点（如果用了CommonsChunkPlugin，记得将公用js引进来）
             hash: true,
-            inject:true
+            minify: false,
+            favicon:path.resolve(__dirname, './src/images/favicon.ico')
         }),
         //支持多个html模板文件访问
         new HtmlWebpackPlugin({
-            //webpack 处理html中img的src引入的图片
             template: 'html-withimg-loader!' + path.resolve(__dirname, './list.html'),
             filename: 'list.html',
-            chunks:['list','common'],   // 这个模板对应上面那个节点（如果用了CommonsChunkPlugin，记得将公用js引进来）
-            inject:true
+            chunks: ['list', 'common'], // 这个模板对应上面那个节点（如果用了CommonsChunkPlugin，记得将公用js引进来）,
+            minify: false,
+            favicon:path.resolve(__dirname, './src/images/favicon.ico')
         }),
         //抽取css代码
         new ExtractTextPlugin({
