@@ -9,7 +9,7 @@ module.exports = {
         list:path.resolve(__dirname, './src/js/list.js')
     },
     output: {
-        publicPath: "http://localhost:8099/"//用于生产环境配置资源实际路径
+        // publicPath: "http://localhost:8099/Public/"//用于生产环境配置资源实际路径
     },
     module:{
     	loaders:[
