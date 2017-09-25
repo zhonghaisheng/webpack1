@@ -1,4 +1,4 @@
-cmd命令报Can't find module 'jquery'解决方案：
+﻿cmd命令报Can't find module 'jquery'解决方案：
 
 cnpm install jquery --save-dev
 
@@ -44,9 +44,10 @@ cnpm run build
 
 webpack压缩代码写法：
 
-1.webpack -p
+1.普通压缩
+webpack -p
 
-2.
+2.混淆压缩
 new webpack.optimize.UglifyJsPlugin({
 	compress: {
 		warnings: false
@@ -54,5 +55,16 @@ new webpack.optimize.UglifyJsPlugin({
 })
 
 备注：开发环境不建议使用第二种方法开启压缩，建议使用第一种方法用于打包（生产环境用）
+
+include/exclude:手动添加必须处理的文件（文件夹）或屏蔽不需要处理的文件（文件夹）（可选）；
+
+一般exclude node_modules文件夹，开发上线后并不需要此文件夹下的内容（实际中已经被引入），只include开发上线后需要的文件（例如开发所必需的js,css,images,html,vue...），此操作可以提升打包性能。
+
+
+设置loader: 'babel-loader?cacheDirectory=true'
+
+结合webpack的babel-loader加载器进行编译，每次重新构建都需要重新编译一次，我们可以针对这个进行增量构建，而不需要每次都全量构建。
+
+babel-loader可以缓存处理过的模块，对于没有修改过的文件不会再重新编译，cacheDirectory有着2倍以上的速度提升，这对于rebuild 有着非常大的性能提升。
 
 打包说明：项目中凡是涉及js,css,images修改的，必须打包后才能提交到线上

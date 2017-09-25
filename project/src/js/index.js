@@ -4,6 +4,7 @@ import '../css/index.css'
 // import 'jquery.mousewheel'//npm局部安装
 import './jquery.mousewheel.js'//自个请求
 import Scroll from './scroll.js'
+import 'bootstrap/dist/css/bootstrap.css'
 
 console.log(childSay);
 

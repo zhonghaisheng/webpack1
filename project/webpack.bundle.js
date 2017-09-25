@@ -13,9 +13,9 @@ module.exports = {
     },
     module:{
     	loaders:[
-            //.css 文件使用 style-loader 和 css-loader 来处理
+            //.css 文件使用 style-loader 和 css-loader 来处理（css不抽离）
             // { test: /\.css$/, loader: 'style-loader!css-loader' },
-            //css抽取插件
+            //css抽取插件（引入css）
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -33,7 +33,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader?cacheDirectory=true'
             }
     	]
     },

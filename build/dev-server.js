@@ -1,17 +1,18 @@
+//启动express服务器入口文件
 var webpackConfig = require('./webpack.dev.conf.js');
 var webpack = require('webpack');
 var express = require('express');
 var compiler = webpack(webpackConfig);
 
-var app = express();
+var app = express();//express充当临时服务器，用于生成文件以及访问
 var opn = require('opn');
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-  // publicPath: webpackConfig.output.publicPath,
-  // stats: {
-  //   colors: true,
-  //   chunks: false
-  // }
+  publicPath: webpackConfig.output.publicPath,
+  stats: {
+    colors: true,
+    chunks: false
+  }
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler);
@@ -22,7 +23,7 @@ compiler.plugin('compilation', function (compilation) {
   })
 })
 
-//使用热重载插件
+//使用热重载插件，进行热更新，生成文件（devMiddleware+hotMiddleware）
 app.use(devMiddleware);
 app.use(hotMiddleware);
 
