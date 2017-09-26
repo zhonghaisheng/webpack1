@@ -43,7 +43,7 @@ module.exports = {
             //webpack 处理html中img的src引入的图片
             template: 'html-withimg-loader!' + path.resolve(__dirname, './index.html'),
             filename: 'index.html',
-            chunks: ['index', 'common'], // 这个模板对应上面那个节点（如果用了CommonsChunkPlugin，记得将公用js引进来）
+            chunks: ['index'], // 这个模板对应上面那个节点（如果用了CommonsChunkPlugin，记得将公用js引进来）
             hash: true,
             minify: false,
             favicon:path.resolve(__dirname, './src/images/favicon.ico')
@@ -52,7 +52,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'html-withimg-loader!' + path.resolve(__dirname, './list.html'),
             filename: 'list.html',
-            chunks: ['list', 'common'], // 这个模板对应上面那个节点（如果用了CommonsChunkPlugin，记得将公用js引进来）,
+            chunks: ['list'], // 这个模板对应上面那个节点（如果用了CommonsChunkPlugin，记得将公用js引进来）,
             minify: false,
             favicon:path.resolve(__dirname, './src/images/favicon.ico')
         }),
@@ -63,9 +63,9 @@ module.exports = {
             allChunks: true
         }),
         // 提供公共代码
-        new CommonsChunkPlugin({
-            name:"common",
-            filename:"js/common.bundle.js"//忽略则以name为输出文件的名字，否则以此为输出文件名字
-       })
+       //  new CommonsChunkPlugin({
+       //      name:"common",
+       //      filename:"js/common.bundle.js"//忽略则以name为输出文件的名字，否则以此为输出文件名字
+       // })
     ]
 }

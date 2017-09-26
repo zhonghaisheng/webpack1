@@ -7,7 +7,7 @@ var webpack = require("webpack"),
     bundleWebpack = require(path.resolve(__dirname,'./project/webpack.bundle'));
 module.exports = merge(bundleWebpack, {
     output: {
-        path: path.resolve(_dirname, './dist/'),
+        path: path.resolve(_dirname, '../dist/'),
         filename: 'js/[name].bundle.js'
     },
     module: {
@@ -41,6 +41,10 @@ module.exports = merge(bundleWebpack, {
     plugins: [
         //不需要打包html将此处注释便可
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./vendor/vendor-manifest.json')
+        }),
         //webpack定义全局变量
         new webpack.ProvidePlugin({
             $: "jquery",
