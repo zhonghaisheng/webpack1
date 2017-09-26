@@ -3,6 +3,10 @@ ExtractTextPlugin = require("extract-text-webpack-plugin"),
 HtmlWebpackPlugin = require('html-webpack-plugin'),
 CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 module.exports = {
+    output: {
+        path: path.resolve(__dirname, '../dist/'),
+        filename: 'js/[name].bundle.js'
+    },
     entry: {
         //可配置多个入口js
         index:path.resolve(__dirname, './src/js/index.js'),

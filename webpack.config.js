@@ -6,10 +6,6 @@ var webpack = require("webpack"),
     merge = require('webpack-merge'),
     bundleWebpack = require(path.resolve(__dirname,'./project/webpack.bundle'));
 module.exports = merge(bundleWebpack, {
-    output: {
-        path: path.resolve(_dirname, '../dist/'),
-        filename: 'js/[name].bundle.js'
-    },
     module: {
         // avoid webpack trying to shim process
         noParse: /es6-promise\.js$/,
