@@ -37,6 +37,7 @@ module.exports = merge(bundleWebpack, {
     plugins: [
         //不需要打包html将此处注释便可
         new webpack.HotModuleReplacementPlugin(),
+        //打包时开启，可加速打包速度
         new webpack.DllReferencePlugin({
             context: __dirname,
             manifest: require('./vendor/vendor-manifest.json')
